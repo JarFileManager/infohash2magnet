@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>InfoHash to Magnet Converter</title>
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+
+</head>
+<body>
+ <form id = "info2magnet" action = "/convert" method = "post">
+     <label for="info-field">Enter InfoHash </label>
+     <input id = "info-field" type = "text" name = "infoHash"> <br>
+     <label for="magnet-field">Magnet Link </label>
+     <input id = "magnet-field" type = "text" name = "magnet" th:attr = "value=${magnetLink}">
+     <button type="button" class="copy-button" onclick="copyMagnetLink()">Copy</button>
+     <br> <br>
+     <input id = "submit-btn" type = "submit" value = "Convert">
+ </form>
+
+
+ <script>
+     function copyMagnetLink() {
+         var magnetField = document.getElementById("magnet-field");
+         magnetField.select();
+         document.execCommand("copy");
+         document.querySelector('.copy-button').textContent = "Copied!";
+     }
+ </script>
+</body>
+</html>
